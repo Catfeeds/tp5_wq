@@ -804,5 +804,8 @@ if (!function_exists('collection')) {
         } else {
             return \think\Collection::make($resultSet);
         }
-    }
+    } 
 }
+
+
+

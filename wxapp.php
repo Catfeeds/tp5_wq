@@ -9,7 +9,27 @@
 defined('IN_IA') or exit('Access Denied');
 require_once IA_ROOT."/addons/hc_step/inc/model.class.php";
 require_once IA_ROOT."/addons/hc_step/wxBizDataCrypt.php";
+
+// 应用目录
+define('APP_PATH', __DIR__.'/tp5/app/');
+// 定义配置文件目录和应用目录同级
+// 加载框架引导文件
+require 'tp5/thinkphp/start.php';
+use app\index\controller\Foreground;
+
 class Hc_stepModuleWxapp extends WeModuleWxapp {
+
+
+
+
+ public function doPageGoodsdetail(){
+        global $_GPC, $_W; 
+        $c=new Foreground();$b=$c->goods_detail();
+ }
+
+
+
+
     public function doPageTest(){
         ob_end_clean();
         global $_GPC, $_W;
@@ -589,8 +609,8 @@ class Hc_stepModuleWxapp extends WeModuleWxapp {
 
     }
 
-    //商品列表
-    public function doPageGoodsdetail(){
+    //商品详细
+    public function doPageGoodsdetail1(){
 
         global $_GPC, $_W;    
         $user = pdo_get('hcstep_users',array('uniacid'=>$_GPC['i'],'user_id'=>$_GPC['user_id']));

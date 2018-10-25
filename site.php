@@ -20,11 +20,8 @@ require_once IA_ROOT."/addons/hc_step/inc/model.class.php";
 // 应用目录
 define('APP_PATH', __DIR__.'/tp5/app/');
 // 定义配置文件目录和应用目录同级
-
 // 加载框架引导文件
 require 'tp5/thinkphp/start.php';
-
-
 use app\index\controller\Backstage;
 
 
@@ -34,29 +31,18 @@ class Hc_stepModuleSite extends WeModuleSite {
 
 
  
-
+//新增的功能
 public function doWebMore_config()
-    {
-         global $_W, $_GPC;
-           include "cube/other_static/header.html";
-           $c=new Backstage();$b=$c->kefu();
-           echo($b);
-	}
+{global $_W, $_GPC;include "cube/other_static/header.html";
+$c=new Backstage();$b=$c->kefu();  echo($b);}
 
+public function doWebKefu()
+{ global $_W, $_GPC; include "cube/other_static/header.html";
+$c=new Backstage;$b=$c->kefu(); echo($b); }
 
-      public function doWebKefu(){
-             global $_W, $_GPC;
-                include "cube/other_static/header.html";
-               $c=new Backstage;$b=$c->kefu();
-               echo($b);
-        }
-
-    public function doWebKefuu_post(){
-        global $_W,$_GPC;
-       include "cube/other_static/header.html";
-       $c=new Backstage();$b=$c->kefu_post();
-       echo($b);
-     }
+public function doWebKefuu_post()
+{global $_W, $_GPC; include "cube/other_static/header.html";
+$c=new Backstage();$b=$c->kefu_post();echo($b); }
 
 
 
