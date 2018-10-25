@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>会员注册</title>
+      <link rel="stylesheet" type="text/css" href="__STATIC__/css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="__STATIC__/css/own.css"/>
+      <link rel="stylesheet" type="text/css" href="__STATIC__/css/iconfont.css"/>
+           <link rel="stylesheet" type="text/css" href="__STATIC__/css/iconfont.css"/>
+	<link href="__STATIC__/css/mui.picker.css" rel="stylesheet" />
+	<link href="__STATIC__/css/mui.poppicker.css" rel="stylesheet" />
+       <style type="text/css">
+        /*下面两项是重置muicss的输入框label和input之间的宽比率*/
+        .mui-input-row label {
+          width: 30%;
+        }
+        .mui-input-row label~input {
+          width: 70%;
+        }
+        #smsbtn{
+          position:absolute;right:0;margin-top:10px;margin-right:8px;
+        }
+        .mui-bar-nav~.mui-content{ padding-top: 0;}
+        .mui-input-group .mui-input-row{height: auto}
+        .mui-input-row{position: relative;}
+        .mui-input-row img{position: absolute;top: 10px;right: 5px;width: 90px;height: 35px;}
+      </style>
+      <style type="text/css">
+        /*下面两项是重置muicss的输入框label和input之间的宽比率*/
+        .mui-input-row label {
+          width: 30%;
+        }
+        .mui-input-row label~input {
+          width: 70%;
+        }
+        #smsbtn{
+          position:absolute;right:0;margin-top:10px;margin-right:8px;
+        }
+        .mui-bar-nav~.mui-content{ padding-top: 10px;}
+        .mui-content{padding:10px;}
+        /*.form-control{background: #3A4C58;color: white}*/
+        .mui-bar-nav~.mui-content {
+    background: #151B1F;
+    padding-top: 10px;
+
+}
+
+.mui-input-group input:last-child {
+    background-image: none;
+    background: #3A4C58;
+    padding-left: 5px;
+}
+.mui-input-row label {
+    width: 30%;
+    background: #3A4C58;
+}
+
+mui-input-row label~select, .mui-input-row label~textarea {
+    float: right;
+    width: 65%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+    background: #3A4C58;
+}
+
+.mui-input-row select {
+    font-size: 17px;
+    height: 37px;
+    padding: 0;
+    background: #3A4C58;
+    color: white;
+}
+.mui-input-row {
+    position: relative;
+    background: #3A4C58;
+}
+.mui-input-group .mui-input-row {
+    height: 40px;
+    background: #3A4C58;
+}
+.mui-input-row label{background:#151B1F;}
+.mui-input-row label{line-height: 1.5rem}
+      </style>
+
+  </head>
+  <body>
+   <!--  <header class="mui-bar mui-bar-nav own-main-background-color" style=" height: 50px;background:#3C8DBC">
+      <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="line-height: 30px; color: white; text-decoration: none;"></a>
+      <h1 class="mui-title" style="line-height: 50px;color:white">注册</h1>
+    </header> -->
+  <div class="mui-content">
+    <div class="mui-card" style="margin-top: 30px;">
+
+        <form id="tf" name="form" method="post" action="{:url()}" role="form" class="mui-input-group">
+        <div class="mui-input-row" style="border-top: 1px solid #ddd;">
+          <label>用户名</label>
+        <input class="form-control" name="username" value="{$rand}" placeholder="请输入用户名" type="text">
+        </div>
+        <div class="mui-input-row">
+          <label>登录密码</label>
+          <input class="form-control" name="password" placeholder="请输入密码" type="password">
+        </div>
+        <div class="mui-input-row">
+          <label>确认密码</label>
+           <input class="form-control" name="password_confirm" placeholder="请输入密码" type="password">
+        </div>
+        <div class="mui-input-row">
+          <label>安全密码</label>
+         <input class="form-control" name="password2" placeholder="请输入安全密码" type="password">
+        </div>
+        <div class="mui-input-row">
+          <label>确认安全密码</label>
+           <input class="form-control" name="password2_confirm" placeholder="请输入安全密码" type="password">
+        </div>
+        <div class="mui-input-row" style="display:none;">
+          <label>姓名</label>
+          <input class="mui-input-clear" type="text" placeholder="请输入真实姓名" name="nickname" id="nickname" />
+        </div>
+        <div class="mui-input-row" style="display:none;">
+          <label>身份证</label>
+          <input class="mui-input-clear" type="text" placeholder="请输入身份证号码" name="idcard" id="idcard" />
+        </div>
+        <div class="mui-input-row">
+          <label>报单中心</label>
+          <input class="form-control" value="{$agent_uid}" name="agent_uid" placeholder="请输入编号" type="text">
+        </div>
+        <div class="mui-input-row">
+          <label>推荐人</label>
+          <input class="form-control" value="{$re_uid}" name="re_uid" placeholder="请输入编号" type="text">
+        </div>
+        <div class="mui-input-row">
+          <label>接点人</label>
+           <input class="form-control" value="{$father_uid}" name="father_uid" placeholder="请输入编号" type="text">
+        </div>
+        <div class="mui-input-row">
+          <label>注册的区域</label>
+           <select class="form-control" name="TPL" id="TPL">
+              <option class="form-control" value="0" {$TPL[0]}> 左区 </option>
+           <!--    <option class="form-control" value="1" {$TPL[1]}> B区 </option> -->
+             <option class="form-control" value="2" {$TPL[2]}>右区  </option>
+            </select>
+        </div>
+          <div class="mui-input-row">
+          <label>注册金额</label>
+          <select  class="form-control"  name='cpzj'>
+                {volist name='cpzj' id='vo'}
+              <option class="form-control" value="{$vo}" >{$vo}</option>
+               {/volist} 
+              </select>
+        </div>
+
+{volist name='list' id='vo' key='k'}
+      <div class="mui-input-row" style="position: relative">
+
+          <label>  {if condition="$k eq 1"}产品添加{else/}
+          &nbsp;
+          {/if}</label>
+        <div style="float: left;"><div style="float: left;" class="mui-numbox" data-numbox-step="1" data-numbox-min="0" data-numbox-max="100">
+                        <button class="mui-btn mui-numbox-btn-minus" type="button" disabled="">-</button>
+                        <input class="mui-numbox-input" name="sum1[][num]" type="number" id="buy-num" style="vertical-align: top;color: black;" >
+                        <input type='hidden' name="sum2[][price]" value="{$vo.price}" >
+                        <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                    </div><span style="margin-left: 5px;line-height: 35px">{$vo.name}：价格{$vo.price}</span> </div>
+        </div>
+   {/volist}
+
+        
+	   <div class="mui-input-row">
+					<label>收货人</label>
+					<input type="text" placeholder="请输入收货人姓名" name="consignee_name">
+				</div>
+				<div class="mui-input-row">
+					<label>手机号</label>
+					<input type="text" placeholder="请输入手机号" name="mobile">
+				</div>
+				<div class="mui-input-row">
+					<label>地区信息</label>
+					
+					<div id='cityResult3' name="cityResult3" style="float:left;padding-top:10px !important;font-size:12px">
+					<span id="province" ></span><span style="margin-left:10px" id="city" ></span><span style="margin-left:10px" id="dist"
+					></span>
+					</div>
+					<div id='showCityPicker3' name="showCityPicker3" style="float:right;margin-right:15px !important;font-size:12px;margin-top:10px;">选择地区</div>
+				</div>
+			
+				<div class="mui-input-row">
+					<label>详细地址</label>
+					<input type="text"  placeholder="街道门牌信息" name="address">
+				</div>
+
+
+         <div class="mui-input-row">
+          <label>验证码</label>
+          <input type="text" placeholder="请输入验证码" type="text" name="verify" class="form-control verify"  />
+          <img src="{:captcha_src()}" alt="captcha" class="admin-login-captcha-img captcha_change" id="captcha_img" style="margin-top: -6px;" />
+        </div>
+      <!--   <div class="mui-input-row">
+          <label>手机号码</label>
+        <input class="form-control" name="mobile" placeholder="请输入手机号码" type="text">
+        </div>
+        <div class="mui-input-row">
+          <label>验证码</label>
+          <input type="text" placeholder="请输入验证码" name="yzm" id="yzm" />
+          <a id="smsbtn">获取验证码</a>
+        </div>
+     -->
+    </div>
+    <div class="mui-button-row" style="margin: 10px 15px;">
+      <button  type="button" id="btn" class="mui-btn mui-btn-block own-btn-green" style="padding: 5px 0px;" onclick="test();">注册</button>
+      
+    </div>
+  </div>
+  <input id="kc_rksjStart"  name="province" type="hidden"  value=""/>
+ <input id="kc_rksjStar" name="city" type="hidden"  value=""/>
+ <input id="kc_rksjSta" name="county" type="hidden"  value=""/>
+      </form>
+ 
+
+
+
+<script type="text/javascript" src="__STATIC__/js/mui.min.js"></script>
+
+    <script type="text/javascript" charset="UTF-8">
+   function test(){
+            var form = new FormData(document.getElementById("tf"));
+            $.ajax({
+                url:"{:url('index/member_add')}",
+                type:"post",
+                data:form,
+                processData:false,
+                contentType:false,
+                dataType: "json",//预期服务器返回的类型
+                success:function(data){
+                   layer.open({
+                      content:data.msg,
+                        btn: ['完成操作','返回'],
+                        yes: function(index, layero) {
+                            window.location.href="{:url('index/index')}";
+                        },
+                        btn2: function(index, layero) {
+ 
+                        }
+                        ,
+                        cancel: function() {
+                            //右上角关闭回调
+                        }
+                    });
+                },
+                error:function(e){
+                   layer.open({
+                      content: '网络错误'
+                      ,skin: 'msg'
+                      ,time: 2 //2秒后自动关闭
+                    });
+                }
+            });        
+             }
+  </script>
+
+<!-- 城市选择 -->
+	<script src="__STATIC__/js/mui.picker.js"></script>
+	<script src="__STATIC__/js/mui.poppicker.js"></script>
+	<script src="__STATIC__/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+
+				//					//级联示例
+				var cityPicker3 = new $.PopPicker({
+					layer: 3
+				});
+				cityPicker3.setData(cityData3);
+				var showCityPickerButton = doc.getElementById('showCityPicker3');
+				var province = doc.getElementById('province');
+				var city = doc.getElementById('city');
+				var dist = doc.getElementById('dist');
+				showCityPickerButton.addEventListener('tap', function(event) {
+					cityPicker3.show(function(items) {
+						province.innerText = (items[0] || {}).text ;
+						city.innerText = (items[1] || {}).text ;
+				       dist.innerText = (items[2] || {}).text ;
+				  document.getElementById("kc_rksjStart").value =(items[0] || {}).text ; 
+				   document.getElementById("kc_rksjStar").value =(items[1] || {}).text ;
+				    document.getElementById("kc_rksjSta").value =(items[2] || {}).text ;
+						});
+
+				}, false);
+			});
+		})(mui, document);
+
+
+	</script>
