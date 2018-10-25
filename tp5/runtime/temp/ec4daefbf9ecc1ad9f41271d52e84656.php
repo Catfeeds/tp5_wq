@@ -1,3 +1,6 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:90:"/home/wwwroot/default/hejiang/addons/hc_step/tp5/app/index/view/./backstage/kefu_post.html";i:1540456804;s:75:"/home/wwwroot/default/hejiang/addons/hc_step/tp5/app/index/view/layout.html";i:1540381647;}*/ ?>
+
+
 
 <style>
 	.dag,.dagtwo,.dagthree,.dagfor{
@@ -7,7 +10,7 @@
 <ul class="nav nav-tabs">
 
 		<li ><a href="<?php echo $this->createWebUrl('kefu');?>">客服消息列表</a></li>
-	<li class="active"><a href="<?php echo $this->createWebUrl('kefu_post');?>">添加客服消息</a></li>
+	<li class="active"><a href="<?php echo $this->createWebUrl('kefuu_post');?>">添加客服消息</a></li>
 
 </ul>
 
@@ -16,7 +19,7 @@
 <div class="clearfix">
 
 	<form id='form'  method="post" class="form-horizontal form" enctype="multipart/form-data" >
-		<input type="hidden" name="id" value="{$info['id']}">
+		<input type="hidden" name="id" value="<?php echo $info['id']; ?>">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				设置
@@ -33,13 +36,13 @@
             <div class="form-group">
                 <label class="col-xs-12 col-sm-3 col-md-2 control-label">回复关键词</label>
                 <div class="col-sm-9">
-                    <input class='form-control' name='kefu_keyword' value='{$info["kefu_keyword"]}'>
+                    <input class='form-control' name='kefu_keyword' value='<?php echo $info["kefu_keyword"]; ?>'>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-xs-12 col-sm-3 col-md-2 control-label">关注图文标题</label>
                 <div class="col-sm-9">
-                    <input class='form-control' name='kefu_title' value='{$info["kefu_title"]}'>
+                    <input class='form-control' name='kefu_title' value='<?php echo $info["kefu_title"]; ?>'>
                 </div>
             </div>
             <div class="form-group">
@@ -51,19 +54,19 @@
             <div class="form-group">
                 <label class="col-xs-12 col-sm-3 col-md-2 control-label">关注图文概述</label>
                 <div class="col-sm-9">
-                    <input class='form-control' name='kefu_gaishu' value='{$info["kefu_gaishu"]}'>
+                    <input class='form-control' name='kefu_gaishu' value='<?php echo $info["kefu_gaishu"]; ?>'>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-xs-12 col-sm-3 col-md-2 control-label">关注图文链接</label>
                 <div class="col-sm-9">
-                    <input class='form-control' name='kefu_url' value='{$info["kefu_url"]}'>
+                    <input class='form-control' name='kefu_url' value='<?php echo $info["kefu_url"]; ?>'>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-xs-12 col-sm-3 col-md-2 control-label">备注</label>
                 <div class="col-sm-9">
-                    <input class='form-control' name='beizhu' value='{$info["beizhu"]}'>
+                    <input class='form-control' name='beizhu' value='<?php echo $info["beizhu"]; ?>'>
                 </div>
             </div>
         </div>
@@ -74,15 +77,15 @@
 
 			<input type="button" name="submit" value="提交" onclick="test10()"  class="btn btn-primary col-lg-1">
 
-			{if empty($info['id'])}
+			<?php if(empty($info['id'])): ?>
 
 				<input type="hidden" name="act" value="add">
 
-			{else}
+			<?php else: ?>
 
 				<input type="hidden" name="act" value="edit">
 
-			{/if}
+			<?php endif; ?>
 
 		</div>
 
@@ -95,7 +98,7 @@
    function test10(){
     var form = new FormData(document.getElementById("form"));
          $.ajax({
-                url:"https://admin.paopaonew.com/addons/hc_step/tp5/public/index/kefu_post",
+                url:"https://admin.paopaonew.com/addons/hc_step/tp5/public/backstage/kefu_post",
                 type:"post",
                 data:form,
                 processData:false,
@@ -105,14 +108,11 @@
                   layer.msg(data.msg);
                 },
                 error:function(e){
-                   layer.open({
-                      content: '网络错误'
-                      ,skin: 'msg'
-                      ,time: 2 //2秒后自动关闭
-                    });
+                   layer.msg('未修改');
                 }
             });    
 
  }
   </script>
+
 

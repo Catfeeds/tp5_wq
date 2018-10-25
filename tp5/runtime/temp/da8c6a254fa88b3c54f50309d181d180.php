@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:75:"/home/wwwroot/default/hejiang/addons/hc_step/app/index/view/index/kefu.html";i:1540385188;s:71:"/home/wwwroot/default/hejiang/addons/hc_step/app/index/view/layout.html";i:1540381647;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"/home/wwwroot/default/hejiang/addons/hc_step/tp5/app/index/view/./backstage/kefu.html";i:1540455210;s:75:"/home/wwwroot/default/hejiang/addons/hc_step/tp5/app/index/view/layout.html";i:1540381647;}*/ ?>
 
 
 
@@ -9,7 +9,7 @@
 
 <ul class="nav nav-tabs">
 
-	<li class="active"><a href="{php echo $this->createWebUrl('kefu')}">客服消息列表</a></li>
+	<li class="active"><a href="<?php echo $this->createWebUrl('kefu')?>">客服消息列表</a></li>
 
 	<li><a href="<?php echo $this->createWebUrl('kefuu_post');?>">添加客服消息</a></li>
 

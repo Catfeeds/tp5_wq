@@ -25,7 +25,7 @@ define('APP_PATH', __DIR__.'/tp5/app/');
 require 'tp5/thinkphp/start.php';
 
 
-use app\index\controller\Index;
+use app\index\controller\Backstage;
 
 
 
@@ -37,18 +37,24 @@ class Hc_stepModuleSite extends WeModuleSite {
 
 public function doWebMore_config()
     {
+         global $_W, $_GPC;
            include "cube/other_static/header.html";
-           $c=new Index();$b=$c->kefu();
+           $c=new Backstage();$b=$c->kefu();
            echo($b);
 	}
 
 
-
+      public function doWebKefu(){
+             global $_W, $_GPC;
+                include "cube/other_static/header.html";
+               $c=new Backstage;$b=$c->kefu();
+               echo($b);
+        }
 
     public function doWebKefuu_post(){
         global $_W,$_GPC;
        include "cube/other_static/header.html";
-       $c=new Index();$b=$c->kefu_post();
+       $c=new Backstage();$b=$c->kefu_post();
        echo($b);
      }
 
@@ -1415,16 +1421,7 @@ public function doWebMore_config()
         include $this->template('shop_post');
     }
 
-    public function doWebKefu(){
-        global $_W,$_GPC;
-        $where['uniacid'] = $_W['uniacid'];
-        $pageindex = max(1, intval($_GPC['page']));
-        $pagesize = 10;
 
-        $list = pdo_getslice('hcstep_kefu',$where,array($pageindex, $pagesize),$total,array(),'','id asc');
-        $page = pagination($total, $pageindex, $pagesize);
-        include $this->template('kefu');
-    }
     //幻灯片
     public function doWebKefu_post(){
         global $_W,$_GPC;
